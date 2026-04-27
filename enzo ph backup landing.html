@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENZO PH | Official Links</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent: #dc2626; /* Crimson Rock Red */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        h1, .card-title {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+        /* Refined Hero Background with subtle zoom animation */
+        .hero-container {
+            position: relative;
+            min-h-screen;
+            width: 100%;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.9)), 
+                        url('https://images.unsplash.com/photo-1459749411177-042180ce673c?auto=format&fit=crop&q=80&w=2070');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            animation: subtleZoom 20s infinite alternate;
+        }
+        @keyframes subtleZoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+        /* Enhanced Glassmorphism */
+        .social-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .social-card:hover {
+            background: rgba(220, 38, 38, 0.15);
+            border-color: var(--accent);
+            transform: scale(1.03);
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.2);
+        }
+        /* Entrance Animation */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s forwards;
+        }
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="hero-bg"></div>
+
+    <div class="relative z-10 min-h-screen flex flex-col">
+        
+        <header class="w-full py-10 flex justify-center fade-up">
+            <img src="https://via.placeholder.com/250x100?text=ENZO+PH" alt="Enzo PH Logo" class="h-14 md:h-20 w-auto object-contain">
+        </header>
+
+        <main class="flex-grow flex flex-col items-center justify-center px-6 pb-20">
+            <div class="text-center mb-12 fade-up delay-1">
+                <h1 class="text-6xl md:text-8xl font-bold italic mb-4 tracking-tighter">ENZO PH</h1>
+                <div class="flex items-center justify-center space-x-4">
+                    <span class="h-[1px] w-12 bg-red-600"></span>
+                    <p class="text-gray-300 tracking-[0.4em] uppercase text-xs md:text-sm font-light">Official Social Hub</p>
+                    <span class="h-[1px] w-12 bg-red-600"></span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full max-w-5xl fade-up delay-2">
+                
+                <a href="https://open.spotify.com/artist/2KMHuZUMyVP5p9PQ26FD8Y?si=y-VIphBURaSpyL6wX29mqQ" target="_blank" class="social-card p-6 flex items-center space-x-5 rounded-2xl group">
+                    <div class="bg-[#1DB954]/10 p-3 rounded-lg group-hover:bg-[#1DB954]/20 transition-colors">
+                        <i class="fab fa-spotify text-3xl text-[#1DB954]"></i>
+                    </div>
+                    <div>
+                        <h2 class="card-title text-xl leading-none mb-1">Spotify</h2>
+                        <p class="text-xs text-gray-400 font-medium">Stream our latest tracks</p>
+                    </div>
+                </a>
+
+                <a href="https://www.youtube.com/@EnzoMusicPH" target="_blank" class="social-card p-6 flex items-center space-x-5 rounded-2xl group">
+                    <div class="bg-[#FF0000]/10 p-3 rounded-lg group-hover:bg-[#FF0000]/20 transition-colors">
+                        <i class="fab fa-youtube text-3xl text-[#FF0000]"></i>
+                    </div>
+                    <div>
+                        <h2 class="card-title text-xl leading-none mb-1">YouTube</h2>
+                        <p class="text-xs text-gray-400 font-medium">Watch Official Videos</p>
+                    </div>
+                </a>
+
+                <a href="https://www.instagram.com/enzomusicph?igsh=N3Ewejcwb2JycmM3" target="_blank" class="social-card p-6 flex items-center space-x-5 rounded-2xl group">
+                    <div class="bg-[#E1306C]/10 p-3 rounded-lg group-hover:bg-[#E1306C]/20 transition-colors">
+                        <i class="fab fa-instagram text-3xl text-[#E1306C]"></i>
+                    </div>
+                    <div>
+                        <h2 class="card-title text-xl leading-none mb-1">Instagram</h2>
+                        <p class="text-xs text-gray-400 font-medium">Photos & Tour Updates</p>
+                    </div>
+                </a>
+
+                <a href="https://www.facebook.com/profile.php?id=61561906456623" target="_blank" class="social-card p-6 flex items-center space-x-5 rounded-2xl group lg:col-start-1">
+                    <div class="bg-[#1877F2]/10 p-3 rounded-lg group-hover:bg-[#1877F2]/20 transition-colors">
+                        <i class="fab fa-facebook text-3xl text-[#1877F2]"></i>
+                    </div>
+                    <div>
+                        <h2 class="card-title text-xl leading-none mb-1">Facebook</h2>
+                        <p class="text-xs text-gray-400 font-medium">Join the community</p>
+                    </div>
+                </a>
+
+                <a href="https://www.tiktok.com/@enzoph7?_r=1&_t=ZS-95sNXXYUP3a" target="_blank" class="social-card p-6 flex items-center space-x-5 rounded-2xl group">
+                    <div class="bg-white/5 p-3 rounded-lg group-hover:bg-white/10 transition-colors">
+                        <i class="fab fa-tiktok text-3xl text-white"></i>
+                    </div>
+                    <div>
+                        <h2 class="card-title text-xl leading-none mb-1">TikTok</h2>
+                        <p class="text-xs text-gray-400 font-medium">Short clips & trends</p>
+                    </div>
+                </a>
+
+            </div>
+        </main>
+
+        <footer class="py-8 text-center fade-up delay-3">
+            <p class="text-[10px] text-gray-500 uppercase tracking-[0.3em]">
+                &copy; 2026 Enzo PH. Engineered for Rock.
+            </p>
+        </footer>
+    </div>
+
+</body>
+</html>

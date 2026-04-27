@@ -1,0 +1,316 @@
+:root {
+    /* Brand Colors */
+    --accent: #e50914; /* Deep Rock Red */
+    --accent-hover: #f6121d;
+    --bg-color: #050505;
+    --text-color: #ffffff;
+    --text-muted: #9ca3af;
+    
+    /* Glassmorphism */
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --card-hover-bg: rgba(229, 9, 20, 0.08);
+    
+    /* Social Brand Colors */
+    --spotify: #1DB954;
+    --youtube: #FF0000;
+    --instagram: #E1306C;
+    --facebook: #1877F2;
+    --tiktok: #ffffff;
+}
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, .logo-text {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+}
+
+/* Background Layers */
+.hero-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(5, 5, 5, 0.6), rgba(5, 5, 5, 0.95)), 
+                url('https://images.unsplash.com/photo-1459749411177-042180ce673c?auto=format&fit=crop&q=80&w=2070');
+    background-size: cover;
+    background-position: center;
+    z-index: -2;
+    animation: subtleZoom 25s infinite alternate ease-in-out;
+}
+
+/* Subtle Film Grain Overlay for a Premium Look */
+.grain-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes subtleZoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
+}
+
+/* Layout */
+.container {
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem 1.5rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header Elements */
+.header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+    width: 100%;
+}
+
+.logo-text {
+    font-size: 4rem;
+    font-weight: 700;
+    font-style: italic;
+    letter-spacing: -0.05em;
+    line-height: 1;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, #ffffff 30%, var(--text-muted));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+    display: inline-block;
+}
+
+.logo-text::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40%;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 2px;
+    box-shadow: 0 0 15px var(--accent);
+}
+
+.subtitle-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.subtitle-container .line {
+    height: 1px;
+    width: 2.5rem;
+    background: linear-gradient(90deg, transparent, var(--text-muted));
+}
+
+.subtitle-container .line:last-child {
+    background: linear-gradient(-90deg, transparent, var(--text-muted));
+}
+
+.subtitle {
+    color: var(--text-muted);
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+
+/* Grid System for Links */
+.links-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    width: 100%;
+    max-width: 500px; /* Constrain width for standard mobile/tablet view */
+    flex-grow: 1;
+}
+
+/* Social Link Cards */
+.social-card {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--card-border);
+    border-radius: 1rem;
+    text-decoration: none;
+    color: var(--text-color);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.social-card:hover {
+    background: var(--card-hover-bg);
+    border-color: rgba(229, 9, 20, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7),
+                0 0 20px rgba(229, 9, 20, 0.1);
+}
+
+/* Dynamic Hover Glow Effect */
+.hover-glow {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: var(--accent);
+    filter: blur(60px);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.social-card:hover .hover-glow {
+    opacity: 0.15;
+}
+
+/* Icons */
+.icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 0.75rem;
+    font-size: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    transition: all 0.4s ease;
+}
+
+.social-card:hover .icon-wrapper {
+    transform: scale(1.05) rotate(5deg);
+}
+
+/* Brand Specific Icons */
+.spotify { color: var(--spotify); }
+.youtube { color: var(--youtube); }
+.instagram { color: var(--instagram); }
+.facebook { color: var(--facebook); }
+.tiktok { color: var(--tiktok); }
+
+.social-card:hover .spotify { background: rgba(29, 185, 84, 0.15); color: #fff; box-shadow: 0 0 15px rgba(29, 185, 84, 0.3); }
+.social-card:hover .youtube { background: rgba(255, 0, 0, 0.15); color: #fff; box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); }
+.social-card:hover .instagram { background: rgba(225, 48, 108, 0.15); color: #fff; box-shadow: 0 0 15px rgba(225, 48, 108, 0.3); }
+.social-card:hover .facebook { background: rgba(24, 119, 242, 0.15); color: #fff; box-shadow: 0 0 15px rgba(24, 119, 242, 0.3); }
+.social-card:hover .tiktok { background: rgba(255, 255, 255, 0.15); color: #fff; box-shadow: 0 0 15px rgba(255, 255, 255, 0.3); }
+
+/* Text Content */
+.card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-content h2 {
+    font-size: 1.3rem;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.15rem;
+    font-weight: 500;
+}
+
+.card-content p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.social-card:hover .card-content p {
+    color: #e5e7eb;
+}
+
+/* Footer */
+.footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    text-align: center;
+    width: 100%;
+}
+
+.footer p {
+    font-size: 0.7rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+}
+
+/* Entrance Animations */
+.fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeUp {
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+.delay-1 { animation-delay: 0.15s; }
+.delay-2 { animation-delay: 0.3s; }
+
+/* Responsive Adjustments */
+@media (min-width: 640px) {
+    .logo-text {
+        font-size: 5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .links-grid {
+        max-width: 900px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    /* Make the last odd item span across to center it if needed */
+    .links-grid a:nth-child(5):last-child {
+        grid-column: span 2;
+        max-width: 440px;
+        margin: 0 auto;
+        width: 100%;
+    }
+}
