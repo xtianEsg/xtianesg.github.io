@@ -1,4 +1,105 @@
-:root {
+const HTML = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENZO PH | Official Links</title>
+    <meta name="description" content="Official Social Hub for the Enzo PH band. Stream our music, watch videos, and join the community.">
+    
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Icons and Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="hero-bg"></div>
+    <div class="grain-overlay"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header fade-up">
+            <div class="logo-container">
+                <img src="https://i.imgur.com/F1V1dz8.png" alt="ENZO PH Logo" class="logo-img">
+            </div>
+            <div class="subtitle-container">
+                <span class="line"></span>
+                <p class="subtitle">Official Social Hub</p>
+                <span class="line"></span>
+            </div>
+        </header>
+
+        <!-- Social Links -->
+        <main class="links-grid fade-up delay-1">
+            <a href="https://open.spotify.com/artist/2KMHuZUMyVP5p9PQ26FD8Y?si=y-VIphBURaSpyL6wX29mqQ" target="_blank" class="social-card">
+                <div class="icon-wrapper spotify">
+                    <i class="fab fa-spotify"></i>
+                </div>
+                <div class="card-content">
+                    <h2>Spotify</h2>
+                    <p>Stream our latest tracks</p>
+                </div>
+                <div class="hover-glow"></div>
+            </a>
+            
+            <a href="https://www.youtube.com/@EnzoMusicPH" target="_blank" class="social-card">
+                <div class="icon-wrapper youtube">
+                    <i class="fab fa-youtube"></i>
+                </div>
+                <div class="card-content">
+                    <h2>YouTube</h2>
+                    <p>Watch Official Videos</p>
+                </div>
+                <div class="hover-glow"></div>
+            </a>
+
+            <a href="https://www.instagram.com/enzomusicph?igsh=N3Ewejcwb2JycmM3" target="_blank" class="social-card">
+                <div class="icon-wrapper instagram">
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <div class="card-content">
+                    <h2>Instagram</h2>
+                    <p>Photos & Tour Updates</p>
+                </div>
+                <div class="hover-glow"></div>
+            </a>
+
+            <a href="https://www.facebook.com/profile.php?id=61561906456623" target="_blank" class="social-card">
+                <div class="icon-wrapper facebook">
+                    <i class="fab fa-facebook"></i>
+                </div>
+                <div class="card-content">
+                    <h2>Facebook</h2>
+                    <p>Join the community</p>
+                </div>
+                <div class="hover-glow"></div>
+            </a>
+
+            <a href="https://www.tiktok.com/@enzoph7?_r=1&_t=ZS-95sNXXYUP3a" target="_blank" class="social-card">
+                <div class="icon-wrapper tiktok">
+                    <i class="fab fa-tiktok"></i>
+                </div>
+                <div class="card-content">
+                    <h2>TikTok</h2>
+                    <p>Short clips & trends</p>
+                </div>
+                <div class="hover-glow"></div>
+            </a>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer fade-up delay-2">
+            <p>&copy; 2026 Enzo PH. Engineered for Rock.</p>
+        </footer>
+    </div>
+</body>
+</html>`;
+
+const CSS = `:root {
     /* Brand Colors */
     --accent: #e50914; /* Deep Rock Red */
     --accent-hover: #f6121d;
@@ -152,7 +253,7 @@ h1, h2, .logo-text {
     grid-template-columns: 1fr;
     gap: 1.25rem;
     width: 100%;
-    max-width: 500px; /* Constrain width for standard mobile/tablet view */
+    max-width: 500px;
     flex-grow: 1;
 }
 
@@ -312,4 +413,26 @@ h1, h2, .logo-text {
         margin: 0 auto;
         width: 100%;
     }
-}
+}`;
+
+export default {
+    async fetch(request, env, ctx) {
+        const url = new URL(request.url);
+
+        // If the request is for style.css, return the CSS string with the correct content type
+        if (url.pathname === '/style.css') {
+            return new Response(CSS, {
+                headers: {
+                    'Content-Type': 'text/css;charset=UTF-8',
+                },
+            });
+        }
+
+        // For all other requests (like /), return the HTML string
+        return new Response(HTML, {
+            headers: {
+                'Content-Type': 'text/html;charset=UTF-8',
+            },
+        });
+    },
+};
